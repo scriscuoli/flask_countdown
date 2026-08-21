@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Christmas Countdown</title>
+<style>
+    body {
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, #160b3d, #14275c);
+        font-family: 'Segoe UI', Arial, sans-serif;
+        color: #fff;
+    }
+    .card {
+        text-align: center;
+        padding: 40px 60px;
+        background: rgba(0, 0, 0, 0.25);
+        border-radius: 16px;
+        box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+    }
+    h1 {
+        margin-top: 0;
+        font-size: 2rem;
+        color: #ffd700;
+        text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+    }
+    .timer {
+        display: flex;
+        gap: 24px;
+        justify-content: center;
+        margin-top: 20px;
+    }
+    .unit {
+        background: rgba(255,255,255,0.08);
+        border: 1px solid rgba(255,255,255,0.15);
+        border-radius: 10px;
+        padding: 16px 20px;
+        min-width: 80px;
+    }
+    .unit .value {
+        font-size: 2.5rem;
+        font-weight: bold;
+        color: #ffff00;
+    }
+    .unit .label {
+        margin-top: 6px;
+        font-size: 0.85rem;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        color: #eee;
+    }
+</style>
+</head>
+<body>
+    <div class="card">
+        <h1>Countdown to Retirement</h1>
+        <div class="timer">
+            <div class="unit"><div class="value" id="days">{{ countdown.days }}</div><div class="label">Days</div></div>
+            <div class="unit"><div class="value" id="hours">{{ countdown.hours }}</div><div class="label">Hours</div></div>
+            <div class="unit"><div class="value" id="minutes">{{ countdown.minutes }}</div><div class="label">Minutes</div></div>
+            <div class="unit"><div class="value" id="seconds">{{ countdown.seconds }}</div><div class="label">Seconds</div></div>
+        </div>
+    </div>
+
+<script>
+    async function updateCountdown() {
+        try {
+            const res = await fetch('/api/countdown');
+            const data = await res.json();
+            document.getElementById('days').textContent = data.days;
+            document.getElementById('hours').textContent = data.hours;
+            document.getElementById('minutes').textContent = data.minutes;
+            document.getElementById('seconds').textContent = data.seconds;
+        } catch (e) {
+            console.error('Failed to fetch countdown', e);
+        }
+    }
+    setInterval(updateCountdown, 1000);
+</script>
+</body>
+</html>
