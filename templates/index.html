@@ -66,10 +66,10 @@
         </div>
         <h2>Working Days</h2>
         <div class="timer">
-            <div class="unit"><div class="value" id="days">{{ weekdaycountdown.days }}</div><div class="label">Days</div></div>
-            <div class="unit"><div class="value" id="hours">{{ weekdaycountdown.hours }}</div><div class="label">Hours</div></div>
-            <div class="unit"><div class="value" id="minutes">{{ weekdaycountdown.minutes }}</div><div class="label">Minutes</div></div>
-            <div class="unit"><div class="value" id="seconds">{{ weekdaycountdown.seconds }}</div><div class="label">Seconds</div></div>
+            <div class="unit"><div class="value" id="wddays">{{ weekdaycountdown.days }}</div><div class="label">Days</div></div>
+            <div class="unit"><div class="value" id="wdhours">{{ weekdaycountdown.hours }}</div><div class="label">Hours</div></div>
+            <div class="unit"><div class="value" id="wdminutes">{{ weekdaycountdown.minutes }}</div><div class="label">Minutes</div></div>
+            <div class="unit"><div class="value" id="wdseconds">{{ weekdaycountdown.seconds }}</div><div class="label">Seconds</div></div>
         </div>
     </div>
 
@@ -82,6 +82,12 @@
             document.getElementById('hours').textContent = data.hours;
             document.getElementById('minutes').textContent = data.minutes;
             document.getElementById('seconds').textContent = data.seconds;
+            const wdres = await fetch('/api/wdcountdown');
+            const wddata = await wdres.json();
+            document.getElementById('wddays').textContent = wddata.days;
+            document.getElementById('wdhours').textContent = wddata.hours;
+            document.getElementById('wdminutes').textContent = wddata.minutes;
+            document.getElementById('wdseconds').textContent = wddata.seconds;
         } catch (e) {
             console.error('Failed to fetch countdown', e);
         }
