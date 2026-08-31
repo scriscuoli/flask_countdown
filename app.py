@@ -61,6 +61,9 @@ def index():
 def api_countdown():
     return jsonify(get_countdown())
 
+@app.route("/api/wdcountdown")
+def api_countdown():
+    return jsonify(get_weekday_countdown())
 
 if __name__ == "__main__":
     app.run(debug=True)
