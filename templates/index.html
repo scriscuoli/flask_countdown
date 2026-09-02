@@ -64,7 +64,13 @@
             <div class="unit"><div class="value" id="minutes">{{ countdown.minutes }}</div><div class="label">Minutes</div></div>
             <div class="unit"><div class="value" id="seconds">{{ countdown.seconds }}</div><div class="label">Seconds</div></div>
         </div>
-       
+        <h2>Work Days</h2>
+        <div class="timer">
+            <div class="unit"><div class="value" id="wdays">{{ countdown.weekdays }}</div><div class="label">Days</div></div>
+            <div class="unit"><div class="value" id="whours">{{ countdown.hours }}</div><div class="label">Hours</div></div>
+            <div class="unit"><div class="value" id="wminutes">{{ countdown.minutes }}</div><div class="label">Minutes</div></div>
+            <div class="unit"><div class="value" id="wseconds">{{ countdown.seconds }}</div><div class="label">Seconds</div></div>
+        </div>
     </div>
 
 <script>
@@ -76,6 +82,10 @@
             document.getElementById('hours').textContent = data.hours;
             document.getElementById('minutes').textContent = data.minutes;
             document.getElementById('seconds').textContent = data.seconds;
+            document.getElementById('wdays').textContent = data.weekdays;
+            document.getElementById('whours').textContent = data.hours;
+            document.getElementById('wminutes').textContent = data.minutes;
+            document.getElementById('wseconds').textContent = data.seconds;
             
         } catch (e) {
             console.error('Failed to fetch countdown', e);
