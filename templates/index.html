@@ -52,6 +52,23 @@
         text-transform: uppercase;
         color: #eee;
     }
+    .progress {
+        height: 1rem;
+        margin-top: 16px;
+        background: rgba(255,255,255,0.08);
+        border-radius: 0.375rem;
+        overflow: hidden;
+    }
+
+    .progress-bar {
+        height: 100%;
+        background-color: #ffff00;
+        color: #fff;
+        text-align: center;
+        font-size: 0.75rem;
+        line-height: 1rem;
+        transition: width 0.6s ease;
+    }
 </style>
 </head>
 <body>
@@ -70,6 +87,11 @@
             <div class="unit"><div class="value" id="whours">{{ countdown.hours }}</div><div class="label">Hours</div></div>
             <div class="unit"><div class="value" id="wminutes">{{ countdown.minutes }}</div><div class="label">Minutes</div></div>
             <div class="unit"><div class="value" id="wseconds">{{ countdown.seconds }}</div><div class="label">Seconds</div></div>
+        </div>
+        <div>
+            <div class="progress" style="height: 20px;" role="progressbar" aria-label="Basic example" aria-valuenow="{{ countdown.countdown }}" aria-valuemin="0" aria-valuemax="187">
+                <div class="progress-bar bg-success" style="width: {{ countdown.countdown }}%"></div>
+            </div>
         </div>
     </div>
 

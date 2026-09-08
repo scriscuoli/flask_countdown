@@ -23,13 +23,15 @@ def get_countdown():
     days = delta.days
     hours, remainder = divmod(delta.seconds, 3600)
     minutes, seconds = divmod(remainder, 60)
-
+    countdown = 187 - days;
+    
     return {
         "days": str(days),
         "weekdays": str(weekdays),
         "hours": str(hours),
         "minutes": str(minutes),
-        "seconds": str(seconds)
+        "seconds": str(seconds),
+        "countdown": countdown
     }
 
 @app.route("/")
