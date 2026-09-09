@@ -23,7 +23,8 @@ def get_countdown():
     days = delta.days
     hours, remainder = divmod(delta.seconds, 3600)
     minutes, seconds = divmod(remainder, 60)
-    countdown = 187 - days;
+    countdown = 187 - days
+    percent = int((countdown*100) /  187)
     
     return {
         "days": str(days),
@@ -31,7 +32,8 @@ def get_countdown():
         "hours": str(hours),
         "minutes": str(minutes),
         "seconds": str(seconds),
-        "countdown": countdown
+        "countdown": countdown,
+        "percent": percent
     }
 
 @app.route("/")
